@@ -1,0 +1,103 @@
+.main {
+  .downloadbox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -65px;
+    padding-top: 75px;
+    background-color: #fff8ee;
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 360px;
+      height: 190px;
+      margin-right: 60px;
+      margin-bottom: 90px;
+      background-color: #f2cd53;
+      border-radius: 7px;
+      box-shadow: 0 3.7px 7.4px 0 rgba(199, 184, 137, 0.56);
+      & > img {
+        width: 145px;
+        margin-right: 28px;
+      }
+      & > div {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        & > p {
+          color: #000;
+          font-weight: bold;
+          font-size: 28px;
+          text-align: center;
+          &.en {
+            font-size: 24px;
+          }
+        }
+        & > img {
+          width: 140px;
+          margin-top: 6px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+:global(html[data-device='desktop']) {
+  .main {
+    width: 100%;
+    .downloadbox {
+      .card {
+        &:last-of-type {
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+        & > div {
+          width: 170px;
+          margin-left: -20px;
+          text-align: center;
+          & > p {
+            &.en {
+              margin-bottom: 15px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .downloadbox {
+    flex-wrap: wrap;
+    margin-top: -25px;
+    padding-top: 50px;
+    .card {
+      width: 510px;
+      height: 270px;
+      margin-right: 0;
+      margin-bottom: 50px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+      & > img {
+        width: 220px;
+        margin-right: 28px;
+      }
+      & > div {
+        width: 210px;
+        height: 220px;
+        & > p {
+          margin: 15px 0;
+          font-size: 38px;
+        }
+        & > img {
+          width: 210px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

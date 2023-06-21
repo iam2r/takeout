@@ -1,0 +1,11 @@
+.app-container {
+  width: 100%;
+  max-width: $maxMainWidth;
+  margin: 0 auto;
+}
+
+:global(html[data-device='mobile']) {
+  .app-container {
+    padding: 0 20px;
+  }
+}

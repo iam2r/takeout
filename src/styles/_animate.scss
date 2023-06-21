@@ -1,0 +1,412 @@
+//css3动画模型
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+
+.animate__animated {
+  @include animate__animated();
+  &.animate__infinite {
+    @include animate__repeat(infinite);
+  }
+
+  &.animate__faster {
+    @include animate__duration(0.5);
+  }
+
+  &.animate__fast {
+    @include animate__duration(0.8);
+  }
+
+  &.animate__slow {
+    @include animate__duration(2);
+  }
+
+  &.animate__slower {
+    @include animate__duration(3);
+  }
+
+  //1~5 repeat
+  $repeat: 1;
+  @while $repeat <= 5 {
+    &.animate__repeat-#{$repeat} {
+      @include animate__repeat($repeat);
+    }
+
+    $repeat: $repeat + 1;
+  }
+
+  // 100ms~2000ms delay
+  $delay: 0.05;
+  @while $delay <= 2 {
+    &.animate__delay-#{$delay * 1000}ms {
+      @include animate__delay($delay);
+    }
+
+    $delay: $delay + 0.05;
+  }
+
+  @media print, (prefers-reduced-motion: reduce) {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+
+    &[class*='Out'] {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes vanishIn {
+  0% {
+    transform: scale(1.2, 1.2);
+    transform-origin: 50% 50%;
+    opacity: 0;
+    filter: blur(90px);
+  }
+  100% {
+    transform: scale(1, 1);
+    transform-origin: 50% 50%;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate__vanishIn {
+  animation-name: vanishIn;
+}
+
+@keyframes streamer {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate__streamer {
+  position: relative;
+  &::after {
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    opacity: 0.4;
+    animation-name: streamer;
+    content: '';
+    @include animate__animated();
+    @include animate__repeat(infinite);
+  }
+}
+
+@keyframes wobbleTop {
+  16.65% {
+    transform: skew(-12deg);
+  }
+  33.3% {
+    transform: skew(10deg);
+  }
+  49.95% {
+    transform: skew(-6deg);
+  }
+  66.6% {
+    transform: skew(4deg);
+  }
+  83.25% {
+    transform: skew(-2deg);
+  }
+  100% {
+    transform: skew(0);
+  }
+}
+
+// 左右晃动
+.animate__wobbleTop {
+  animation-name: wobbleTop;
+}
+.animate__wobbleTop__hover {
+  transform: perspective(1px) translateZ(0);
+  transform-origin: 0 100%;
+  &:hover,
+  &:focus,
+  &:active {
+    @include animate__animated();
+    @extend .animate__wobbleTop;
+  }
+}
+
+//hover:向上位移
+.animate__float__hover {
+  @include animation-move-hover(up);
+}
+//hover:向右位移
+.animate__forward__hover {
+  @include animation-move-hover(right);
+}
+//hover:向左位移
+.animate__backward__hover {
+  @include animation-move-hover(left);
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.3);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.3);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+.animate__heartBeat {
+  animation-name: heartBeat;
+  animation-duration: calc(1s * 1.3);
+  animation-duration: calc(var(--animate-duration) * 1.3);
+  animation-timing-function: ease-in-out;
+}
+
+.animate__heartBeat__hover {
+  &:hover,
+  &:focus,
+  &:active {
+    @include animate__animated();
+    @extend .animate__heartBeat;
+  }
+}
+
+//hover:微微放大
+.animate__grow__hover {
+  box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+  transition-duration: 0.3s;
+  transition-property: transform;
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.animate__pulse {
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+.animate__flipInY {
+  backface-visibility: visible !important;
+  animation-name: flipInY;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale3d(0.3, 0.3, 0.3);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+.animate__zoomIn {
+  animation-name: zoomIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.animate__fadeIn {
+  -webkit-animation-name: fadein;
+  animation-name: fadeIn;
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+    opacity: 0;
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+.animate__bounceIn {
+  animation-name: bounceIn;
+  animation-duration: calc(1s * 0.75);
+  animation-duration: calc(var(--animate-duration) * 0.75);
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate__slideInLeft {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate__slideInRight {
+  animation-name: slideInRight;
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animate__fadeInRight {
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animate__fadeInLeft {
+  animation-name: fadeInLeft;
+}
+
+//上下左右位移50%
+@include animation-create-translate-keyframes(scrollUpHalf, up, 50%);
+@include animation-create-translate-keyframes(scrollRightHalf, right, 50%);
+@include animation-create-translate-keyframes(scrollDownHalf, down, 50%);
+@include animation-create-translate-keyframes(scrollLeftHalf, left, 50%);
+.animate__scrollUpHalf {
+  animation-name: scrollUpHalf;
+  animation-timing-function: linear;
+}
+.animate__scrollRightHalf {
+  animation-name: scrollRightHalf;
+  animation-timing-function: linear;
+}
+.animate__scrollDownHalf {
+  animation-name: scrollDownHalf;
+  animation-timing-function: linear;
+}
+.animate__scrollLeftHalf {
+  animation-name: scrollLeftHalf;
+  animation-timing-function: linear;
+}

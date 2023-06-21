@@ -1,0 +1,79 @@
+/* Animation
+ -------------------------- */
+@mixin animate__animated {
+  animation-duration: 1s;
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+}
+
+@mixin animate__repeat($repeat: 1) {
+  @if $repeat == infinite {
+    animation-iteration-count: $repeat;
+  } @else {
+    animation-iteration-count: calc(1 * $repeat);
+    animation-iteration-count: calc(var(--animate-repeat) * $repeat);
+  }
+}
+
+@mixin animate__duration($duration: 1) {
+  animation-duration: calc(1s * $duration);
+  animation-duration: calc(var(--animate-duration) * $duration);
+}
+
+@mixin animate__delay($delay: 0) {
+  animation-delay: calc(1s * $delay);
+  animation-delay: calc(var(--animate-delay) * $delay);
+}
+
+@mixin animation-move-hover($direction, $selector: '&', $offset: 8px) {
+  #{$selector} {
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    transform: perspective(1px) translateZ(0);
+    transition-timing-function: ease-out;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    #{$selector} {
+      @if $direction == up {
+        transform: translateY(-1 * $offset);
+      } @else if $direction == right {
+        transform: translateX($offset);
+      } @else if $direction == down {
+        transform: translateY($offset);
+      } @else if $direction == left {
+        transform: translateX(-1 * $offset);
+      } @else {
+        @error "Unknown direction #{$direction}.";
+      }
+    }
+  }
+}
+
+@mixin animation-create-translate-keyframes(
+  $animationName,
+  $direction,
+  $offset: 100%
+) {
+  @keyframes #{$animationName} {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      @if $direction == up {
+        transform: translate3d(0, -1 * $offset, 0);
+      } @else if $direction == right {
+        transform: translate3d($offset, 0, 0);
+      } @else if $direction == down {
+        transform: translate3d(0, $offset, 0);
+      } @else if $direction == left {
+        transform: translate3d(-1 * $offset, 0, 0);
+      } @else {
+        @error "Unknown direction #{$direction}.";
+      }
+    }
+  }
+}

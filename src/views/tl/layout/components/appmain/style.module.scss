@@ -1,0 +1,24 @@
+.app-main {
+  position: relative;
+  flex: 1 0 auto;
+  width: 100%;
+  .app-main-container {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+:global(.fixed-header) {
+  & + .app-main {
+    padding-top: $menuHeight;
+  }
+}
+
+:global(html[data-device='mobile']) {
+  :global(.fixed-header) {
+    & + .app-main {
+      padding-top: $menuHeight + 50px;
+    }
+  }
+}

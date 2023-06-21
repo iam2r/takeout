@@ -1,0 +1,56 @@
+.international {
+  padding: 6px 8px 6px 13px;
+  color: $themeColor !important;
+  font-size: 18px !important;
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+
+  .openIcon {
+    transform: rotateZ(0);
+    transition: transform 0.3s;
+  }
+  .open {
+    transform: rotateZ(-180deg);
+  }
+}
+.active {
+  color: #000 !important;
+  background-color: $themeColor !important;
+  & > span {
+    color: #000 !important;
+  }
+}
+
+:global(.el-icon--right) {
+  margin-left: 15px !important;
+}
+
+:global(.el-dropdown-menu) {
+  position: relative;
+  padding: 0;
+  border: none;
+
+  :global(.el-dropdown-menu__item) {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    height: 60px;
+    padding: 0 15px;
+    font-size: 18px;
+    white-space: nowrap;
+    background-color: #000;
+    &:hover {
+      color: #000 !important;
+      background-color: $themeColor !important;
+    }
+  }
+}
+:global(.popper__arrow) {
+  display: none !important;
+}
+:global(html[data-device='mobile']) {
+  .international {
+    font-size: 24px !important;
+  }
+}

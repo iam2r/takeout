@@ -1,0 +1,104 @@
+.main {
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 30px;
+  background-color: $themeColor;
+  .title {
+    img {
+      border-bottom-color: #fce393;
+    }
+  }
+}
+
+:global(html[data-device='desktop']) {
+  .main {
+    & > div {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .left {
+        width: 700px;
+        margin-right: 76px;
+        margin-left: 35px;
+        p {
+          &:nth-of-type(1) {
+            font-weight: 500;
+            font-size: 26px;
+          }
+          &:nth-of-type(2) {
+            margin-top: 31px;
+            margin-left: 2px;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 55px;
+          }
+          &:nth-of-type(3) {
+            position: relative;
+            padding-left: 20px;
+            font-weight: 900;
+            font-size: 22px;
+            line-height: 53px;
+            &::before {
+              position: absolute;
+              top: 20px;
+              left: 0;
+              display: block;
+              width: 12px;
+              height: 12px;
+              background-color: #000;
+              content: '';
+            }
+          }
+        }
+      }
+      .about-img {
+        width: 400px;
+        height: 518px;
+        margin-top: -32px;
+      }
+    }
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .main {
+    padding: 1px 35px 40px 35px;
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      & > p {
+        &:nth-of-type(1) {
+          font-weight: 500;
+          font-size: 26px;
+          line-height: 30px;
+        }
+        &:nth-of-type(2) {
+          position: relative;
+          font-weight: 900;
+          font-size: 22px;
+          line-height: 43px;
+        }
+      }
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 31px 0 10px 0;
+        p {
+          width: 450px;
+          margin-top: -10px;
+          margin-left: 2px;
+          font-size: 24px;
+          line-height: 40px;
+          transform: scale(0.9);
+        }
+      }
+      .about-img {
+        width: 250px;
+        height: 330px;
+      }
+    }
+  }
+}

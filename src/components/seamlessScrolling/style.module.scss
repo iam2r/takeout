@@ -1,0 +1,46 @@
+.main {
+  overflow: hidden;
+  > div {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .placeholder {
+    display: flex;
+    visibility: hidden;
+  }
+  .mainScroller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    > span {
+      display: block;
+    }
+  }
+  &[data-direction='left'],
+  &[data-direction='right'] {
+    display: inline-block;
+    .mainScroller {
+      display: inline-block;
+      white-space: nowrap;
+      > span {
+        display: inline-block;
+      }
+    }
+  }
+
+  &[data-direction='right'] {
+    .mainScroller {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  &[data-direction='down'] {
+    .mainScroller {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}

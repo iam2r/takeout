@@ -1,0 +1,75 @@
+.main {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: 53px;
+    color: $menuText;
+    border-radius: 15px;
+    &:hover {
+      color: $themeColor;
+    }
+
+    cursor: pointer;
+    > span {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-weight: 500;
+      font-size: 22px;
+      text-align: center;
+      transition: color 0.3s;
+    }
+    &.active {
+      color: $themeColor;
+
+      > span {
+        color: $themeColor;
+        &::after {
+          background-color: $themeColor;
+        }
+      }
+    }
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .main {
+    flex-direction: column;
+    overflow-x: hidden;
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 89px;
+      height: 89px;
+      margin-left: 0;
+      padding: 8px 18px;
+      border-radius: 15px;
+      cursor: pointer;
+      > span {
+        color: #000;
+        font-size: 25px;
+        &::after {
+          bottom: 14px;
+          height: 4px;
+          border-radius: 2px;
+        }
+      }
+      &.active {
+        > span {
+          color: $themeColor !important;
+          font-size: 24px;
+          border-bottom: 4px solid $themeColor;
+        }
+      }
+    }
+  }
+}

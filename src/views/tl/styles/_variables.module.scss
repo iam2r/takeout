@@ -1,0 +1,10 @@
+/* stylelint-disable */
+:export {
+  menuBg: #{$menuBg};
+  menuBgHover: #{$menuBgHover};
+  menuText: #{$menuText};
+  menuActiveText: #{$themeColor};
+  menuHeight: #{$menuHeight};
+  responsiveWidth: #{$responsiveWidth};
+  maxMainWidth: #{$maxMainWidth};
+}

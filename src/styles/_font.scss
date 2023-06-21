@@ -1,0 +1,16 @@
+//字体定义，为可商用的英文/中文
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto-Regular'), url('~@/assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: local('AlibabaPuHuiTi-Regular'),
+    url('~@/assets/fonts/AlibabaPuHuiTi-2-55-Regular.otf');
+}
+
+@font-face {
+  font-family: 'PingFang-Regular';
+  src: local('PingFang-Regular'), url('~@/assets/fonts/PingFang-Regular.ttf');
+}

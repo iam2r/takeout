@@ -1,0 +1,30 @@
+.main {
+  width: 100%;
+  & > .partners {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 400px;
+      margin: -33px 60px 95px 0;
+      border: solid 1px #bbb;
+      border-radius: 4px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .main {
+    & > .partners {
+      img {
+        width: 330px;
+        margin: -33px 25px 95px 0;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

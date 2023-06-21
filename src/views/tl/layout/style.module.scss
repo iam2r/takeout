@@ -1,0 +1,69 @@
+.app-wrapper {
+  @include clearfix;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .drawer-bg {
+    position: fixed;
+    top: 0;
+    z-index: 8;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    .mobile-menu-container {
+      display: flex;
+      width: 40%;
+      height: 624px;
+      max-height: calc(100% - $menuHeight);
+      margin-top: $menuHeight;
+      overflow: hidden;
+      background-color: white;
+      .scroll-container {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        @include scroll-bar;
+        .scroll-scroller {
+          min-height: 100%;
+        }
+      }
+    }
+  }
+
+  .main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    :global(.app-container) {
+      height: 100%;
+    }
+  }
+
+  &:global(.mobile) {
+    .main-container {
+      :global(.el-menu) {
+        display: none;
+      }
+    }
+  }
+  &:global(.withoutAnimation) {
+    .drawer-bg,
+    .drawer-bg .mobile-menu-container {
+      transition: none;
+    }
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .app-wrapper {
+    .drawer-bg {
+      .mobile-menu-container {
+        margin-top: 160px;
+      }
+    }
+  }
+}

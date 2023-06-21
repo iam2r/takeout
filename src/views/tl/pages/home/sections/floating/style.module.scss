@@ -1,0 +1,33 @@
+.main {
+  position: fixed;
+  right: 0;
+  bottom: 140px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 123px;
+  height: 282px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px 0 rgba(132, 131, 131, 0.25);
+  img {
+    width: 100px;
+    height: 32px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    &:last-of-type {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 5px;
+      cursor: default;
+    }
+  }
+  span {
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+  }
+}

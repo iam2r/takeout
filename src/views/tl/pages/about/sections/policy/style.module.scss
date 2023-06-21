@@ -1,0 +1,48 @@
+.main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px 20px;
+  h1 {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  article,
+  h3 {
+    padding-left: 40px;
+    color: #000;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  h4 {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  h5 {
+    padding-left: 16px;
+    color: #000;
+    font-weight: normal;
+    font-size: 16px;
+  }
+
+  th {
+    padding: 20px;
+    font-weight: normal;
+    line-height: 30px;
+    text-align: left;
+    border: 1px solid #000;
+    &:nth-last-of-type(2) {
+      width: 300px;
+    }
+    &:nth-last-of-type(1) {
+      width: 500px;
+    }
+  }
+}

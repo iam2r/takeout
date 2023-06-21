@@ -1,0 +1,125 @@
+.main {
+  width: 100%;
+  padding: 50px;
+  background-color: #000;
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $themeColor;
+
+    .logo {
+      @include sprite-scale($sprite-main-t-llogo-1-x3, 1/2);
+
+      display: block;
+    }
+    & > div {
+      margin-right: 20px;
+      margin-left: 58px;
+      padding-left: 58px;
+      font-weight: 500;
+      border-left: 1px solid #84827b;
+      p {
+        &:nth-of-type(1) {
+          font-size: 22px;
+          line-height: 24px;
+        }
+        &:nth-of-type(2) {
+          font-size: 16px;
+        }
+      }
+    }
+    i {
+      margin-right: 20px;
+      cursor: pointer;
+      &.face {
+        @include sprite-scale($sprite-main-face, 1/2);
+      }
+      &.onme {
+        @include sprite-scale($sprite-main-onme, 1/2);
+      }
+      &.phone {
+        @include sprite-scale($sprite-main-phone, 1/2);
+      }
+      &.tel {
+        @include sprite-scale($sprite-main-tel, 1/2);
+      }
+    }
+  }
+  .bottom {
+    margin-top: 50px;
+    font-size: 14px;
+    & > span {
+      margin-left: 30px;
+      padding-left: 30px;
+      border-left: 1px solid $themeColor;
+      cursor: pointer;
+      &:first-of-type {
+        margin-left: 0;
+        padding-left: 0;
+        border: 0;
+      }
+      &:last-of-type {
+        cursor: default;
+      }
+    }
+  }
+}
+
+:global(html[data-device='desktop']) {
+  .main {
+    height: 237px;
+  }
+}
+:global(html[data-device='mobile']) {
+  .main {
+    padding: 40px 50px 20px 50px;
+    & > div {
+      .logo {
+        @include sprite-scale($sprite-main-t-llogo-1-x3, 2/5);
+      }
+      & > div {
+        height: 50px;
+        margin-right: 10px;
+        margin-left: 30px;
+        padding-left: 5px;
+        p {
+          &:nth-of-type(1) {
+            font-size: 30px;
+            transform: scale(0.6);
+          }
+          &:nth-of-type(2) {
+            transform: scale(0.6);
+          }
+        }
+      }
+      i {
+        &.face {
+          @include sprite-scale($sprite-main-face, 2/5);
+        }
+        &.onme {
+          @include sprite-scale($sprite-main-onme, 2/5);
+        }
+        &.phone {
+          @include sprite-scale($sprite-main-phone, 2/5);
+        }
+        &.tel {
+          @include sprite-scale($sprite-main-tel, 2/5);
+        }
+      }
+    }
+    .bottom {
+      flex-wrap: wrap;
+      transform: scale(0.8);
+      & > span {
+        &:last-of-type {
+          display: block;
+          width: 100%;
+          margin: 20px 0 0 0;
+          text-align: center;
+          border: 0;
+        }
+      }
+    }
+  }
+}

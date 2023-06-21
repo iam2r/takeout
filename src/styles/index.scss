@@ -1,0 +1,31 @@
+//scss中引入文件可以省略开头的_
+@import 'reseter.css/css/minireseter.css';
+@import './transition.scss';
+@import './animate.scss';
+@import './font.scss';
+@import './elementhack.scss';
+
+/* Global scss */
+html {
+  box-sizing: border-box;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  body {
+    height: 100%;
+    font-size: 16px;
+    font-family: Roboto, 'Helvetica Neue', 'Microsoft Yahei', '微软雅黑',
+      'AlibabaPuHuiTi', Arial, sans-serif;
+    background-color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100% !important;
+    @include scroll-bar;
+    #app {
+      height: 100%;
+    }
+  }
+
+  div:focus {
+    outline: none;
+  }
+}

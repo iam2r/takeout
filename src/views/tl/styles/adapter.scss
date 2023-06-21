@@ -1,0 +1,34 @@
+//此文件已被排除自动转rem px不会自动转成rem
+html {
+  // 用px 做单位的 尺寸 为 ：设计稿 版心 1600px + 一个偏移值 （避免 1600px时 两边没有 间距 比较丑）
+  $usePxWidth: $maxMainWidth + 20px;
+
+  // (>=1620) 1620px以上的用固定px做单位
+
+  @media (min-width: #{$usePxWidth}) {
+    font-size: calc(1920px / (1920 / 100));
+  }
+
+  //( >=1200 & <=1619) mobile临界点到 1619 之间 按 1920px 设计稿 关联vw
+
+  @media only screen and (min-width: 1500px) and (max-width: #{$usePxWidth - 1px}) {
+    font-size: calc(100vw / (1920 / 100) * 1);
+  }
+
+  @media only screen and (min-width: 1400px) and (max-width: 1499px) {
+    font-size: calc(100vw / (1920 / 100) * 1.06);
+  }
+
+  @media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    font-size: calc(100vw / (1920 / 100) * 1.09);
+  }
+
+  @media only screen and (min-width: 1200px) and (max-width: 1299px) {
+    font-size: calc(100vw / (1920 / 100) * 1.18);
+  }
+
+  //(<1200) 移动端(1200px以下为移动端，可改为媒体查询配合，此处为1200px以下用js加了data-device='mobile') 按750px设计稿处理
+  &[data-device='mobile'] {
+    font-size: calc(100vw / (750 / 100));
+  }
+}

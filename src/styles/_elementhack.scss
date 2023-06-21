@@ -1,0 +1,108 @@
+//elementui css 扩展重写
+html {
+  .el-message {
+    &.my-mini {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      min-width: auto;
+      padding: 8px 15px;
+      border-radius: 15px;
+      > .el-message__icon {
+        display: none;
+      }
+    }
+  }
+  .el-dialog {
+    &.my-dialog {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      width: 1200px;
+      max-width: calc(100% - 30px);
+      max-height: calc(100% - 30px);
+      margin: 0 !important;
+      padding: 0 13px;
+      padding-bottom: 5px;
+      overflow: hidden;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.15);
+      transform: translate(-50%, -50%);
+      .el-dialog__header {
+        padding: 25px 0;
+        .el-dialog__headerbtn {
+          top: 20px;
+          right: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .el-dialog__close {
+            width: 24px;
+            height: 24px;
+            color: #0c64ea;
+            font-size: 40px;
+
+            &::before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+      .el-dialog__body {
+        padding: 0 7px;
+        overflow-y: scroll;
+        @include scroll-bar(8px);
+        &.el-loading-parent--relative {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  .el-table {
+    &.table-hover--disabled {
+      .el-table__body {
+        tr:not(.current-row) {
+          &:hover {
+            > td {
+              background-color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //修复低版本ios safari动画不写起始状态表现的bug
+  .v-modal-enter {
+    animation: v-modal-in-hack 0.2s ease;
+  }
+
+  .v-modal-leave {
+    animation: v-modal-out-hack 0.2s ease forwards;
+  }
+
+  @keyframes v-modal-in-hack {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes v-modal-out-hack {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

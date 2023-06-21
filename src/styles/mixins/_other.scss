@@ -1,0 +1,110 @@
+@mixin clearfix {
+  $selector: '&';
+
+  @at-root {
+    #{$selector}::before,
+    #{$selector}::after {
+      display: table;
+      content: '';
+    }
+    #{$selector}::after {
+      clear: both;
+    }
+  }
+}
+
+@mixin nprogress($bgColor: #6f6fd6) {
+  #nprogress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    .bar {
+      height: 3px;
+      background: $bgColor;
+      .peg {
+        box-shadow: 0 0 10px $bgColor, 0 0 5px $bgColor;
+      }
+    }
+
+    .spinner {
+      .spinner-icon {
+        border-top-color: $bgColor;
+        border-left-color: $bgColor;
+      }
+    }
+  }
+}
+
+@mixin vertical-center {
+  $selector: &;
+
+  @at-root {
+    #{$selector}::after {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      content: '';
+    }
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Scrollbar
+   -------------------------- */
+@mixin scroll-bar(
+  $--scrollbar-width: 8px,
+  $--scrollbar-thumb-background: #e3e3e3
+) {
+  $--scrollbar-track-background: transparent;
+  &::-webkit-scrollbar {
+    z-index: 11;
+    width: $--scrollbar-width;
+
+    &-thumb {
+      width: $--scrollbar-width;
+      background: $--scrollbar-thumb-background;
+      border-radius: $--scrollbar-width;
+    }
+
+    &-corner {
+      background: $--scrollbar-track-background;
+    }
+
+    &-track {
+      background: $--scrollbar-track-background;
+
+      &-piece {
+        width: $--scrollbar-width;
+        background: $--scrollbar-track-background;
+      }
+    }
+
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    &:horizontal {
+      height: $--scrollbar-width;
+    }
+  }
+}
+
+/* Placeholder
+   -------------------------- */
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

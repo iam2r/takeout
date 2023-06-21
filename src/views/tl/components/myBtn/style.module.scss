@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 44px;
+  margin-top: 10px;
+  background-color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+  i {
+    margin-right: 10px;
+  }
+  p {
+    color: #f2f9ff;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    span {
+      color: #f2f9ff;
+      font-weight: normal;
+      font-size: 12px;
+    }
+  }
+  .app {
+    @include sprite-scale($sprite-main-app, 2/3);
+  }
+  .google {
+    @include sprite-scale($sprite-main-google, 2/3);
+
+    margin-right: 6px;
+    margin-left: -7px;
+  }
+  .service {
+    @include sprite-scale($sprite-main-service, 2/3);
+  }
+}
+
+:global(html[data-device='mobile']) {
+  .main {
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 16px;
+    span {
+      display: block;
+      width: 118%;
+      font-size: 12px;
+      transform: scale(0.7);
+    }
+  }
+}
